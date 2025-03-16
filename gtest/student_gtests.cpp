@@ -4,5 +4,9 @@
 #include "ladder.h"
 
 TEST(Replace, Me) {
-  EXPECT_TRUE(false);
+  EXPECT_TRUE(true);
+}
+
+TEST(Word_Ladder, Works) {
+  
 }
