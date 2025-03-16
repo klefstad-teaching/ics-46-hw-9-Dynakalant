@@ -7,8 +7,8 @@ void error(string word1, string word2, string msg) {
 }
 
 bool edit_distance_within(const std::string& str1, const std::string& str2, int d) {
-    size_t m = str1.size() + 1;
-    size_t n = str2.size() + 1;
+    int m = str1.size() + 1;
+    int n = str2.size() + 1;
     //function LevenshteinDistance(char s[1..m], char t[1..n]):
     // for all i and j, d[i,j] will hold the Levenshtein distance between
     // the first i characters of s and the first j characters of t
@@ -76,7 +76,7 @@ bool is_adjacent(const string& word1, const string& word2) {
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list) {
     if (begin_word == end_word) {
         std::vector<string> e;
-        return v;
+        return e;
     }
     if (!std::binary_search(word_list.begin(), word_list.end(), end_word)) {
         std::vector<string> empty_vector;
@@ -92,9 +92,8 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         ladder_queue.pop();
         string last_word = ladder[ladder.size()-1];
         for (auto word : word_list) {
-            if (visited.find(word) == visited.end()) {
-                std::cout << last_word << ' ' << word << '\n';
-                if (is_adjacent(last_word, word)) {
+            if (is_adjacent(last_word, word)) {
+                if (visited.find(word) == visited.end()) {
                     visited.insert(word);
                     std::vector<string> new_ladder = ladder;
                     new_ladder.push_back(word);
