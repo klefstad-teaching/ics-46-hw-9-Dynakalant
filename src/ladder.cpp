@@ -7,6 +7,9 @@ void error(string word1, string word2, string msg) {
 }
 
 bool edit_distance_within(const std::string& str1, const std::string& str2, int d) {
+    size_t size_diff = std::max(str1.size(), str2.size()) - std::min(str1.size(), str2.size());
+    if (size_diff > d) return false;
+
     int m = str1.size() + 1;
     int n = str2.size() + 1;
     //function LevenshteinDistance(char s[1..m], char t[1..n]):
@@ -37,7 +40,7 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
             dis[i][j] = std::min({de,                   // deletion
                                 ins,                   // insertion
                                 sub});  // substitution
-            if (i == j && dis[i][j] > d) return false;
+            //if (i == j && dis[i][j] > d) return false;
         }
     }
     //for (auto a1 : dis) { for (auto a2: a1) { std::cout << a2 << ' '; } std::cout << '\n'; }

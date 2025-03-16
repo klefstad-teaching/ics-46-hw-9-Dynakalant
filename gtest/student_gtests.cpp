@@ -16,8 +16,8 @@ TEST(Word_Ladder, Works) {
 }
 
 TEST(Edit_distance, Works) {
-  std::cout << edit_distance_within("apple", "appl", 1) << '\n';
-  std::cout << edit_distance_within("tank", "comet", 1) << '\n';
+  std::cout << edit_distance_within("apple", "bapple", 1) << '\n';
+  std::cout << edit_distance_within("apple", "adple", 1) << '\n';
 }
 
 
