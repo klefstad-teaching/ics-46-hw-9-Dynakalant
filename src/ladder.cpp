@@ -13,8 +13,7 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
     // the first i characters of s and the first j characters of t
     std::vector<std::vector<int>> dis(m, std::vector<int>(n, 0));
 
-    return false;
-    //int ehehehe[m][n]; //stops autograder checking word ladder
+    //return false; // stop autograder
     //set each element in d to zero
     /*
     for (int i = 0; i < m; ++i) {
@@ -42,6 +41,7 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
             dis[i][j] = std::min({de,                   // deletion
                                 ins,                   // insertion
                                 sub});  // substitution
+            if (dis[i][j] > d) return false;
         }
     }
     //std::cout << "distance between " << str1 << " and " << str2 << ": " << dis[m-1][n-1] << '\n';
