@@ -27,6 +27,7 @@ struct Edge {
 
 struct Graph : public vector<vector<Edge>> {
     int numVertices=0;
+    vector<int> previous;
 };
 
 inline istream& operator>>(istream& in, Graph& G) {
