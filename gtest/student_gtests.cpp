@@ -14,3 +14,11 @@ TEST(Word_Ladder, Works) {
   print_word_ladder(result);
 }
 
+TEST(Dijkstras, Works) {
+  Graph testr;
+  file_to_graph("src/small.txt", testr);
+  vector<int> s = dijkstra_shortest_path(testr, 0, testr.previous);
+  vector<int> e = extract_shortest_path(s, testr.previous, 2);
+
+  print_path(e, 3);
+}
