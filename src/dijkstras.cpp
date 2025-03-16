@@ -6,23 +6,19 @@ struct Node {
 };
 
 struct NodeLT {
-    bool operator()(const Node& l, const Node& r) { return l.weight <= r.weight; }
+    bool operator()(const Node& l, const Node& r) { return l.weight < r.weight; }
 };
 
 vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous) {
     int n = G.numVertices;
 
     vector<int> distance(n, INF);
-
-    previous = vector<int>(n, -1);
-
     vector<bool> visited(n, false);
-
+    distance[source] = 0;
+    previous = vector<int>(n, -1);
     std::priority_queue<Node, std::vector<Node>, NodeLT> pq;
 
     pq.push(Node(source, 0));
-
-    distance[source] = 0;
 
     while (!pq.empty()) {
         Node current = pq.top();

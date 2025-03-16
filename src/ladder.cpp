@@ -5,7 +5,7 @@
 void error(string word1, string word2, string msg) {
     std::cout << "Error on words: " << word1 << ", " << word2 << ": " << msg << '\n';
 }
-
+ 
 bool edit_distance_within(const std::string& str1, const std::string& str2, int d) {
     size_t size_diff = std::max(str1.size(), str2.size()) - std::min(str1.size(), str2.size());
     if (size_diff > d) return false;
