@@ -16,11 +16,6 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
 
     //return false; // stop autograder
     //set each element in d to zero
-    /*
-    for (int i = 0; i < m; ++i) {
-        for (int j = 0; j < n; ++j) dis[i][j] = 0;
-    }
-    */
 
     // source prefixes can be transformed into empty string by
     // dropping all characters
@@ -42,9 +37,10 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
             dis[i][j] = std::min({de,                   // deletion
                                 ins,                   // insertion
                                 sub});  // substitution
-            if (dis[i][j] > d) return false;
+            if (i == j && dis[i][j] > d) return false;
         }
     }
+    //for (auto a1 : dis) { for (auto a2: a1) { std::cout << a2 << ' '; } std::cout << '\n'; }
     //std::cout << "distance between " << str1 << " and " << str2 << ": " << dis[m-1][n-1] << '\n';
     return dis[m-1][n-1] <= d;
 }

@@ -15,6 +15,12 @@ TEST(Word_Ladder, Works) {
   print_word_ladder(result);
 }
 
+TEST(Edit_distance, Works) {
+  std::cout << edit_distance_within("apple", "appl", 1) << '\n';
+  std::cout << edit_distance_within("tank", "comet", 1) << '\n';
+}
+
+
 TEST(Dijkstras, Works) {
   Graph testr;
   file_to_graph("src/small.txt", testr);
