@@ -1,5 +1,6 @@
 #include "ladder.h"
 #include <algorithm>
+#include <unordered_set>
 
 void error(string word1, string word2, string msg) {
     std::cout << "Error on words: " << word1 << ", " << word2 << ": " << msg << '\n';
@@ -74,7 +75,7 @@ bool is_adjacent(const string& word1, const string& word2) {
 
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list) {
     if (begin_word == end_word) {
-        std::vector<string> v = {begin_word};
+        std::vector<string> e;
         return v;
     }
     if (!std::binary_search(word_list.begin(), word_list.end(), end_word)) {
@@ -84,7 +85,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     std::queue<vector<string>> ladder_queue;//queue of vector of strings
     std::vector<string> init_ladder = {begin_word};
     ladder_queue.push(init_ladder);
-    std::set<string> visited;
+    std::unordered_set<string> visited;
     visited.insert(begin_word);
     while (!ladder_queue.empty()) {
         std::vector<string> ladder = ladder_queue.front();
@@ -92,6 +93,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         string last_word = ladder[ladder.size()-1];
         for (auto word : word_list) {
             if (visited.find(word) == visited.end()) {
+                std::cout << last_word << ' ' << word << '\n';
                 if (is_adjacent(last_word, word)) {
                     visited.insert(word);
                     std::vector<string> new_ladder = ladder;
@@ -114,6 +116,7 @@ void load_words(set<string> & word_list, const string& file_name) {
 
 void print_word_ladder(const vector<string>& ladder) {
     if (ladder.size() == 0) { std::cout << "No word ladder found."; }
+    else { std::cout << "Word ladder found: "; }
     for (string word : ladder) std::cout << word << ' ';
     std::cout << '\n';
 }
