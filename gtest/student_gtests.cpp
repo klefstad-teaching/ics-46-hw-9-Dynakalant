@@ -23,9 +23,9 @@ TEST(Edit_distance, Works) {
 
 TEST(Dijkstras, Works) {
   Graph testr;
-  file_to_graph("src/small.txt", testr);
+  file_to_graph("src/medium.txt", testr);
   vector<int> s = dijkstra_shortest_path(testr, 0, testr.previous);
-  vector<int> e = extract_shortest_path(s, testr.previous, 2);
+  vector<int> e = extract_shortest_path(s, testr.previous, 3);
 
   print_path(e, 3);
 }

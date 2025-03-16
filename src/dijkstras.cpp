@@ -29,7 +29,8 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
         for (Edge neighbor : G[u]) {
             int v = neighbor.dst;
             int weight = neighbor.weight;
-            if (!visited[v] && distance[u] + weight < distance[v]) {
+            //std::cout << u << " to " << v << " w " << weight << '\n';
+            if (/*!visited[v] &&*/ distance[u] + weight < distance[v]) {
                 distance[v] = distance[u] + weight;
                 previous[v] = u;
                 pq.push(Node(v, distance[v]));
