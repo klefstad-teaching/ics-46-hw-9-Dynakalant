@@ -76,6 +76,10 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         std::vector<string> v = {begin_word};
         return v;
     }
+    if (!std::binary_search(word_list.begin(), word_list.end(), end_word)) {
+        std::vector<string> empty_vector;
+        return empty_vector;
+    }
     std::queue<vector<string>> ladder_queue;//queue of vector of strings
     std::vector<string> init_ladder = {begin_word};
     ladder_queue.push(init_ladder);
