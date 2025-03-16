@@ -1,18 +1,24 @@
 #include "ladder.h"
 #include <algorithm>
 
+void error(string word1, string word2, string msg) {
+    std::cout << "Error on words: " << word1 << ", " << word2 << ": " << msg << '\n';
+}
+
 bool edit_distance_within(const std::string& str1, const std::string& str2, int d) {
     size_t m = str1.size() + 1;
     size_t n = str2.size() + 1;
     //function LevenshteinDistance(char s[1..m], char t[1..n]):
     // for all i and j, d[i,j] will hold the Levenshtein distance between
     // the first i characters of s and the first j characters of t
-    int dis[m][n];
+    std::vector<std::vector<int>> dis(m, std::vector<int>(n, 0));
 
     //set each element in d to zero
+    /*
     for (int i = 0; i < m; ++i) {
         for (int j = 0; j < n; ++j) dis[i][j] = 0;
     }
+    */
 
     // source prefixes can be transformed into empty string by
     // dropping all characters
