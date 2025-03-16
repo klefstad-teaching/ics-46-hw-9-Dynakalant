@@ -10,7 +10,7 @@ struct NodeLT {
 };
 
 vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous) {
-    int n = G.size();
+    int n = G.numVertices;
 
     vector<int> distance(n, INF);
 
